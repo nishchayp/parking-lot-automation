@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block head %}
+<style>
+* {
+	text-align: center;
+}
+</style>
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+	<div class="jumbotron">
+		<h1>{{ title }}</h1>
+		<p>{{ description }}</p>
+		<p>Equivalent SQL query statement is
+			<br><b><i>{{ sql_stmt }}</i></b></p>
+	</div>
+	<table class="table table-striped">
+		<thead class="thead-dark">
+			<tr>
+				{% for heading in table_headings %}
+				<th>{{ heading }}</th>
+				{% endfor %}
+			</tr>
+		</thead>
+		<tbody>
+			{% for row in results %}
+			<tr>
+				{% for cell in row %}
+				<td>{{ row[loop.index0] }}</td>
+				{% endfor %}
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<a href="/queries" class="btn btn-lg btn-secondary">Back</a>
+</div>
+{% endblock %}

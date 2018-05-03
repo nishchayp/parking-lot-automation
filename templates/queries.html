@@ -1,0 +1,159 @@
+{% extends "layout.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='queries-style.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<div class="masthead clearfix">
+	<div class="inner">
+	<h3 class="masthead-brand">Plauto</h3>
+		<nav class="nav nav-masthead">
+			<a class="nav-link" href="/">Home</a>
+			<a class="nav-link" href="/newEntry">New Entry</a>
+			<a class="nav-link active" href="/queries">Queries</a>
+			<a class="nav-link" href="/generateTicket">Generate-Ticket</a>
+		</nav>
+	</div>
+</div>
+
+<div class="content container">
+	<div class="jumbotron">
+		<h1>Queries</h1>
+		<p>Choose from the below given queries to get the desired information about the current status of the parking lot.</p>
+	</div>
+	<div class="container">
+		<div class="list-group">
+
+			<a href="/showAllRate" class="list-group-item list-group-item-action">
+				<h3>Show rates</h3>
+				<!-- <p>Displays the rates in the parking facility</p> -->
+			</a>
+
+
+			<a href="/showAll" class="list-group-item list-group-item-action">
+				<h3>Show all customers</h3>
+				<!-- <p>Displays details of all the customers in the parking lot</p> -->
+			</a>
+
+			<a href="/showAllSp" class="list-group-item list-group-item-action">
+				<h3>Show all special customers</h3>
+				<!-- <p>Displays details of all the special customers in the parking facility</p> -->
+			</a>
+
+			<a href="/showAllRg" class="list-group-item list-group-item-action">
+				<h3>Show all regular customers</h3>
+				<!-- <p>Displays details of all the special customers in the parking facility</p> -->
+			</a>
+
+			<a href="/showAllP" class="list-group-item list-group-item-action">
+				<h3>Show all parking slots</h3>
+				<!-- <p>Displays details of all the parking slots in the parking lot</p> -->
+			</a>
+
+			<a href="/showAllPA" class="list-group-item list-group-item-action">
+				<h3>Show all available parking slots</h3>
+				<!-- <p>Displays details of all the available parking slots in the parking lot</p> -->
+			</a>
+
+			<a href="#" class="list-group-item list-group-item-action" data-toggle="modal" data-target="#selectFloorModal">
+				<h3>Show all parking spots on a floor</h3>
+				<!-- <p>Displays details of all the parking spots in the parking lot on the particular floor chosen.</p> -->
+			</a>
+
+			<a href="#" class="list-group-item list-group-item-action" data-toggle="modal" data-target="#selectFloorModalA">
+				<h3>Show all available parking spots on a floor</h3>
+				<!-- <p>Displays details of all the available parking spots in the parking lot on the particular floor chosen.</p> -->
+			</a>
+
+			
+		</div>
+	</div>
+</div>
+
+<div class="mastfoot">
+	<div class="inner">
+		<p>Project for Database Systems Lab
+			<br>by Rishabh Srivastav(42), Somiya Singh Chhillar(43), Nishchay Parashar(44)
+			<br>of CSE-D, MIT, Manipal</p>
+	</div>
+</div>
+
+<!--All Modals -->
+
+<!-- list of floors for parking_spot -->
+<div id="selectFloorModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+        <h3 class="modal-title" style="color: #333">Select Floor</h3>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+			<div class="list-group">
+				<a href="/showAllByFloor/1" class="list-group-item list-group-item-action">Floor 1</a>
+			</div>
+			<div class="list-group">
+				<a href="/showAllByFloor/2" class="list-group-item list-group-item-action">Floor 2</a>
+			</div>
+			<div class="list-group">
+				<a href="/showAllByFloor/3" class="list-group-item list-group-item-action">Floor 3</a>
+			</div>
+			<div class="list-group">
+				<a href="/showAllByFloor/4" class="list-group-item list-group-item-action">Floor 4</a>
+			</div>
+		</div>
+	  </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- list of floors for parking_spot -->
+<div id="selectFloorModalA" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+        <h3 class="modal-title" style="color: #333">Select Floor</h3>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+			<div class="list-group">
+				<a href="/showAllByFloorA/1" class="list-group-item list-group-item-action">Floor 1</a>
+			</div>
+			<div class="list-group">
+				<a href="/showAllByFloorA/2" class="list-group-item list-group-item-action">Floor 2</a>
+			</div>
+			<div class="list-group">
+				<a href="/showAllByFloorA/3" class="list-group-item list-group-item-action">Floor 3</a>
+			</div>
+			<div class="list-group">
+				<a href="/showAllByFloorA/4" class="list-group-item list-group-item-action">Floor 4</a>
+			</div>
+		</div>
+	  </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+{% endblock %}

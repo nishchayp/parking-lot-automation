@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='queries-style.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<div class="masthead clearfix">
+	<div class="inner">
+	<h3 class="masthead-brand">Plauto</h3>
+		<nav class="nav nav-masthead">
+			<a class="nav-link" href="/">Home</a>
+			<a class="nav-link" href="/newEntry">New Entry</a>
+			<a class="nav-link" href="/queries">Queries</a>
+			<a class="nav-link active" href="/generateTicket">Generate-Ticket</a>
+		</nav>
+	</div>
+</div>
+
+<div class="content container">
+	<div class="jumbotron">
+		<h1>Generate-Ticket</h1>
+		<p>Enter the vehicle number of car that wants to exit and generate parking ticket containg all its details and amount payable. This will also make sure to note that now the vehicle's spot is un-occupied.</p>
+	</div>
+	<div class="container form">
+		<form action="/getTicket" method="post">
+			<div class="form-group">
+				<label for="vehicle_no">Vehicle number:</label>
+				<select class="form-control" id="vehicle_no" name="vehicle_no">
+					{% for row in results %}
+						<option>{{ row[0] }}</option>
+					{% endfor %}
+				</select>
+			</div>
+			<button type="submit" class="btn btn-info">Submit</button>
+		</form> 
+	</div>
+</div>
+
+<div class="mastfoot">
+	<div class="inner">
+		<p>Project for Database Systems Lab
+			<br>by Rishabh Srivastav(42), Somiya Singh Chhillar(43), Nishchay Parashar(44)
+			<br>of CSE-D, MIT, Manipal</p>
+	</div>
+</div>
+
+{% endblock %}

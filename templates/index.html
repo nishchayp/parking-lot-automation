@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='index-style.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<div class="site-wrapper">
+
+<div class="site-wrapper-inner">
+
+	<div class="cover-container">
+
+		<div class="masthead clearfix">
+			<div class="inner">
+			<h3 class="masthead-brand">Plauto</h3>
+				<nav class="nav nav-masthead">
+					<a class="nav-link active" href="/">Home</a>
+					<a class="nav-link" href="/newEntry">New Entry</a>
+					<a class="nav-link" href="/queries">Queries</a>
+					<a class="nav-link" href="/generateTicket">Generate-Ticket</a>
+				</nav>
+			</div>
+		</div>
+
+	<div class="inner cover">
+		<h1 class="cover-heading">Automate with Plauto.</h1>
+		<p class="lead">Plauto is a Parking Lot Automation software. It helps the parking lot operators to optimize the available space and make alloting parking spots easy and efficient.<br>Checkout <i><b>Queries</b></i> to know the status of the parking lot and when once decided add a <i><b>New Entry</b></i> to the desired parking spot.<br></p>
+		<p class="lead">
+		<a href="/newEntry" class="btn btn-lg btn-secondary">New Entry</a>
+		<a href="/queries" class="btn btn-lg btn-secondary">Queries</a>
+		<a href="/generateTicket" class="btn btn-lg btn-secondary">Generate-Ticket</a>
+		</p>
+	</div>
+
+	<div class="mastfoot">
+		<div class="inner">
+			<p>Project for Database Systems Lab
+				<br>by Rishabh Srivastav(42), Somiya Singh Chhillar(43), Nishchay Parashar(44)
+				<br>of CSE-D, MIT, Manipal</p>
+		</div>
+	</div>
+
+	</div>
+
+</div>
+
+</div>
+{% endblock %}

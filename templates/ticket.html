@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block head %}
+<style>
+* {
+	text-align: center;
+}
+</style>
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+	<div class="jumbotron">
+		<h1>Ticket</h1>
+		<p>Ticket Generated</p>
+		<!-- <p>Equivalent SQL query statement is -->
+			<!-- <br><b><i>select ..</i></b></p> -->
+	</div>
+
+	<h3>Customer Infomation</h3>
+	<table class="table table-striped">
+		<thead class="thead-dark">
+			<tr>
+				{% for heading in table_headings_customer %}
+				<th>{{ heading }}</th>
+				{% endfor %}
+			</tr>
+		</thead>
+		<tbody>
+			{% for row in customer_details %}
+			<tr>
+				{% for cell in row %}
+				<td>{{ row[loop.index0] }}</td>
+				{% endfor %}
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	<h3>Receipt</h3>
+	<table class="table table-striped">
+		<thead class="thead-dark">
+			<tr>
+				{% for heading in table_headings_slip %}
+				<th>{{ heading }}</th>
+				{% endfor %}
+			</tr>
+		</thead>
+		<tbody>
+			{% for row in slip_details %}
+			<tr>
+				{% for cell in row %}
+				<td>{{ row[loop.index0] }}</td>
+				{% endfor %}
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	<a href="/" class="btn btn-lg btn-secondary">Back</a>
+</div>
+{% endblock %}

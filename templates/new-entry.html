@@ -1,0 +1,121 @@
+{% extends "layout.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='queries-style.css') }}">
+<style>
+.form {
+	text-align: left;
+}
+</style>
+<script type="text/javascript">
+	$(function() {
+	  setTimeout(function(){
+	    $('.alert').slideUp(500);
+	  }, 5000);
+	});
+</script>
+{% endblock %}
+
+{% block body %}
+
+<div class="masthead clearfix">
+	<div class="inner">
+	<h3 class="masthead-brand">Plauto</h3>
+		<nav class="nav nav-masthead">
+			<a class="nav-link" href="/">Home</a>
+			<a class="nav-link active" href="/newEntry">New Entry</a>
+			<a class="nav-link" href="/queries">Queries</a>
+			<a class="nav-link" href="/generateTicket">Generate-Ticket</a>
+		</nav>
+	</div>
+</div>
+
+<div class="content container">
+	<div class="jumbotron">
+		<h1>New Entry</h1>
+		<p>Enter details of the vehicle that is to be parked. Use the 'Queries' tab to find desired spot.</p>
+	</div>
+
+	<div class="alert alert-primary" role="alert">
+	  {% for message in get_flashed_messages()%}
+	    {{ message }}
+	  {% endfor %}
+	</div>
+
+	<div class="container form">
+		<form action="{{ request.path }}" method="post">
+			{{ form.csrf }}
+			
+			<div class="form-group">
+				<label for="first_name">First Name:</label>
+				<input class="form-control" id="first_name" name="first_name">
+			</div>
+			<div class="alert alert-warning" role="alert">
+				{% for message in form.first_name.errors %}
+					{{ message }}
+				{% endfor %}
+			</div>
+			
+			<div class="form-group">
+				<label for="last_name">Last Name:</label>
+				<input class="form-control" id="last_name" name="last_name">
+			</div>
+			<div class="alert alert-warning" role="alert">
+				{% for message in form.last_name.errors %}
+					{{ message }}
+				{% endfor %}
+			</div>
+
+			<div class="form-group">
+				<label for="mobile_no">Mobile Number:</label>
+				<input class="form-control" id="mobile_no" name="mobile_no">
+			</div>
+			<div class="alert alert-warning" role="alert">
+				{% for message in form.mobile_no.errors %}
+					{{ message }}
+				{% endfor %}
+			</div>
+
+			<div class="form-group">
+				<label for="vehicle_no">Vehicle Number:</label>
+				<input class="form-control" id="vehicle_no" name="vehicle_no">
+			</div>
+			<div class="alert alert-warning" role="alert">
+				{% for message in form.vehicle_no.errors %}
+					{{ message }}
+				{% endfor %}
+			</div>
+
+			<div class="form-group">
+				<label for="vehicle_type">Vehicle Type(2/4-wheeler):</label>
+				<select class="form-control" id="vehicle_type" name="vehicle_type">
+					<option>2</option>
+					<option>4</option>
+				</select>
+			</div>
+
+			<div class="form-group">
+				<label for="given_slot">Alloted Parking Slot Id:</label>
+				<select class="form-control" id="given_slot" name="given_slot">
+					{% for row in results %}
+						<option>{{ row[0] }}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+			<button type="submit" class="btn btn-info">Submit</button>
+		</form> 
+	</div>
+</div>
+
+
+<div class="mastfoot">
+	<div class="inner">
+		<p>Project for Database Systems Lab
+			<br>by Rishabh Srivastav(42), Somiya Singh Chhillar(43), Nishchay Parashar(44)
+			<br>of CSE-D, MIT, Manipal</p>
+	</div>
+</div>
+
+{% endblock %}
+
